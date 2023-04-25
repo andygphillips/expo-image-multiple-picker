@@ -11,6 +11,7 @@ import React, {
   RefObject,
   useEffect,
   useState,
+  useCallback,
 } from 'react'
 import {
   ActivityIndicator,
@@ -28,6 +29,7 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native'
+import {useFocusEffect} from '@react-navigation/native'
 import Svg, { Path } from 'react-native-svg'
 
 export type Views = 'album' | 'gallery'
@@ -908,14 +910,15 @@ export function ImagePicker(props: ImagePickerProps) {
       }
     }
   }, [status])
+  useFocusEffect(
+    useEffect(() => {
+      BackHandler.addEventListener('hardwareBackPress', handleBackPress)
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', handleBackPress)
-
-    return () => {
-      BackHandler.removeEventListener('hardwareBackPress', handleBackPress)
-    }
-  }, [selectedAlbum])
+      return () => {
+        BackHandler.removeEventListener('hardwareBackPress', handleBackPress)
+      }
+    }, [selectedAlbum])
+  );
 
   useEffect(() => {
     if (props.onSelectAlbum) props.onSelectAlbum(selectedAlbum)
