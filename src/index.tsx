@@ -912,14 +912,12 @@ export function ImagePicker(props: ImagePickerProps) {
   }, [status])
   useFocusEffect(
     useCallback(() => {
-      useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', handleBackPress)
+      BackHandler.addEventListener('hardwareBackPress', handleBackPress)
 
-        return () => {
-          BackHandler.removeEventListener('hardwareBackPress', handleBackPress)
-        }
-      }, [selectedAlbum])
-    })
+      return () => {
+        BackHandler.removeEventListener('hardwareBackPress', handleBackPress)
+      }
+    }, [selectedAlbum])
   );
 
   useEffect(() => {
