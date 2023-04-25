@@ -65,7 +65,8 @@
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
-    "expo-media-library": "*"
+    "expo-media-library": "*",
+    "@react-navigation": "*"
   },
   "jest": {
     "preset": "react-native",
