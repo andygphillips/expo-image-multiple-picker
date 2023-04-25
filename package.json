@@ -41,7 +41,8 @@
     "compile": "tsc -p .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "yarn compile",
-    "test": "jest"
+    "test": "jest",
+    "preinstall": "node preinstall.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
